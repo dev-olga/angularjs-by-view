@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html ng-app="angular-js-course-app">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Teams manager</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="app/app.css">
+
+</head>
+<body ng-cloak>
+
+<div>
+
+    <div ui-view></div>
+
+</div>
+
+<!-- JavaScript vendor files -->
+<script src="../vendor/angular/angular.js"></script>
+<script src="../vendor/angular-ui-router/angular-ui-router.js"></script>
+<script src="../vendor/angular-ui-bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
+
+<!-- JavaScript application files -->
+<script src="app/app.js"></script>
+<script src="app/search/search.js"></script>
+<script src="app/info/info.js"></script>
+
+<!--Search page-->
+<script src="app/search/searchCtrl.js"></script>
+<!--Info page-->
+<script src="app/info/infoCtrl.js"></script>
+<script src="app/info/directives/memberTitle/member-title.js"></script>
+<script src="app/info/directives/postRender/post-render.js"></script>
+<script src="app/info/directives/columnSort/column-sort.js"></script>
+<script src="app/info/filters/interval.js"></script>
+
+<script src="app/common/common.js"></script>
+<!-- Common/Helpers -->
+<script src="common/arrayHelper.js"></script>
+<!-- Common/Services -->
+<script src="app/common/services/services.js"></script>
+<script src="app/common/services/teamsService.js"></script>
+<script src="app/common/services/searchService.js"></script>
+<!-- Common/Components -->
+<script src="app/common/components/components.js"></script>
+<script src="app/common/components/tabs/tabs.js"></script>
+<script src="app/common/components/tabs/tabsCtrl.js"></script>
+<script src="app/common/components/teams/teams.js"></script>
+<script src="app/common/components/teams/teamsCtrl.js"></script>
+<!--Common/Directives -->
+<script src="app/common/directives/tag/tag.js"></script>
+
+</body>
+</html>

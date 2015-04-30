@@ -1,0 +1,23 @@
+<div class="search-tab">
+    <input class="search form-control"
+           ng-model="selectedMember"
+           typeahead="member as member.name for member in searchMembers($viewValue)"
+           typeahead-min-length="3"
+           typeahead-on-select="selectMember($item, $model, $label)"
+           typeahead-template-url="memberTemplate.html"
+           ng-disabled="!team"
+    />
+    <input type="button" value="Refresh" ng-disabled="refreshDisabled" class="refresh form-control" ng-click="refresh()">
+
+    <script type="text/ng-template" id="memberTemplate.html">
+        <a>
+            <span class="title">{{match.model.name}}</span>
+            (<span class="desc">{{match.model.grade}} {{match.model.job}}</span>)
+        </a>
+    </script>
+
+    <div ng-repeat="member in teamMembers | filter:{isRemoved:false}" class="tags">
+        <tag item="member" on-remove="removeMember(member)"></tag>
+    </div>
+
+</div>

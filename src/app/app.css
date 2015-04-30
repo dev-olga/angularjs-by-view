@@ -1,0 +1,98 @@
+body>div{
+    margin: auto;
+    padding: 50px 0;
+    width: 1200px;
+}
+body .form-control{
+    display: inline;
+}
+.box{
+    margin: 10px 0;
+}
+/*Tabs content */
+.tabs{
+    float: left;
+    width: 80%;
+}
+.tab-container{
+    border: 1px solid #ddd;
+    border-top: none;
+    padding: 15px;
+}
+
+/*Teams least*/
+.teams-content{
+    float: left;
+    margin-left: 10px;
+    width: -moz-calc(20% - 10px);
+    width: -webkit-calc(20% - 10px);
+    width: calc(20% - 10px);
+}
+input.add{
+    height: 26px;
+    width: -moz-calc(100% - 30px);
+    width: -webkit-calc(100% - 30px);
+    width: calc(100% - 30px);
+}
+
+button.add{
+    height: 26px;
+    text-align: center;
+    padding: 0;
+    top: 0;
+    width: 26px;
+}
+
+.new-team {
+    padding-bottom: 10px;
+}
+
+.teams-content .tags {
+    display: block;
+}
+
+.teams-content .tags .tag{
+    width: 100%;
+}
+
+.teams-content .item .title{
+    width: 100%;
+    text-align: left;
+    word-wrap: break-word;
+}
+.teams-content .item.active .title{
+    color: #FFFFFF;
+    background: #428bca;
+}
+.teams-content .item.active .empty{
+    font-style: italic;
+}
+
+/* Search tab */
+
+.search-tab input[type=radio] {
+    padding: 0 0 0 10px;
+}
+
+.search-tab  input.search{
+    width: -moz-calc(100% - 100px);
+    width: -webkit-calc(100% - 100px);
+    width: calc(100% - 100px);
+}
+.search-tab  input.refresh{
+    width: 96px;
+}
+
+/* Info tab */
+.info-tab table{
+    width: 100%;
+}
+.info-tab table th{
+    background: #428bca;
+    color: #FFFFFF;
+}
+.info-tab table th, .info-tab table td{
+    padding: 3px 10px;
+    border: solid 1px grey;
+    border-collapse: collapse;
+}

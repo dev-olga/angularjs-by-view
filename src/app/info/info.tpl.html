@@ -1,0 +1,72 @@
+<div class="info-tab">
+    <div class="box">
+        <input placeholder="Filter" class="form-control" ng-model="valueFilter">
+    </div>
+<div ng-hide="membersLoading">
+    <div class="right">
+        <pagination boundary-links="true"
+                    class="pagination-sm"
+                    previous-text="&lsaquo;"
+                    next-text="&rsaquo;"
+                    first-text="&laquo;"
+                    last-text="&raquo;"
+                    rotate="false"
+                    max-size="7"
+                    ng-model="currentPage"
+                    total-items="filtered.length"
+                    items-per-page="itemsPerPage"
+                >
+        </pagination>
+    </div>
+    <div class="clear"></div>
+    <table>
+        <thead>
+            <th th-sort by="order" reverse="reverse" order="'member.name'">Name</th>
+            <th th-sort by="order" reverse="reverse" order="'member.job'">Job title</th>
+            <th th-sort by="order" reverse="reverse" order="'member.age'">Age</th>
+            <th th-sort by="order" reverse="reverse" order="'member.grade'">Grade</th>
+        </thead>
+        <tbody>
+            <tr
+                ng-repeat-start="item in filtered = (members | filter:valueFilter) | orderBy:order:reverse | interval:(currentPage-1)*itemsPerPage:itemsPerPage"
+                ng-click="expand(item); $event.stopPropagation()"
+                ng-class-odd="'odd'"
+                ng-class-even="'even'"
+                class="expandable">
+                <td>
+                    <span class="link" ng-click="select(item.member); $event.stopPropagation()"><member-title item="item.member"></member-title></span>
+                </td>
+                <td>{{item.member.job}}</td>
+                <td>{{item.member.age}}</td>
+                <td>{{item.member.grade}}</td>
+            </tr>
+            <tr ng-repeat-end ng-show="item.expanded">
+                <td colspan="4" >
+                    <div ng-show="item.commentsLoading">
+                        <div class="loading">Loading</div>
+                    </div>
+                    <div ng-bind-html="item.comments" ng-hide="item.loading"></div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="right">
+        <pagination boundary-links="true"
+                    class="pagination-sm"
+                    previous-text="&lsaquo;"
+                    next-text="&rsaquo;"
+                    first-text="&laquo;"
+                    last-text="&raquo;"
+                    rotate="false"
+                    max-size="7"
+                    ng-model="currentPage"
+                    total-items="filtered.length"
+                    items-per-page="itemsPerPage">
+        </pagination>
+    </div>
+
+</div>
+    <div class="loading" ng-show="membersLoading">Loading...</div>
+<post-render on-callback="loadMembers()"></post-render>
+    
+</div>
