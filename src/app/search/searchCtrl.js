@@ -11,7 +11,7 @@
         $scope.refreshDisabled = true;
 
         if ($scope.team){
-            $scope.teamMembers = $scope.team.members;
+            $scope.teamMembers = angular.copy(teamsService.selectedTeam.members, $scope.teamMembers);//$scope.team.members;
         }
 
         $scope.$watch( function () { return teamsService.selectedTeam; }, function ( team ) {

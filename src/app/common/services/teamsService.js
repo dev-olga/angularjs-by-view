@@ -17,12 +17,14 @@
         this.refreshMembers = function(array){
             for(var i=0; i<array.length; i++ ){
                 var item = array[i];
-                var index = this.selectedTeam.members.indexOf(item);
+                var index = arrayHelper.indexOf(this.selectedTeam.members, function(val){
+                    return val.id == item.id;
+                });
                 if(index < 0 && item.isNew){
                     item.isNew = false;
                     this.selectedTeam.members.push(item);
                 }
-                else if (index > -1 && item.isRemoved){
+                if (index > -1 && item.isRemoved){
                     this.selectedTeam.members.splice(index, 1);
                 }
             }
@@ -36,6 +38,8 @@
                return val.id == member.id;
             });
             if(!item){
+                member.isNew = false;
+                member.isRemoved = false;
                 this.selectedTeam.members.push(member);
             }
         }

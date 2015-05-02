@@ -13,9 +13,9 @@
         var i = 0;
         for(; i< array.length; i++){
             if(func(array[i])){
-                return array[i];
+                return i;
             }
         }
-        return i == array.length ? -1 : i;
+        return -1;
     }
 }( window.arrayHelper = window.arrayHelper || {}));
