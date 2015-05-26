@@ -1,13 +1,16 @@
 <div class="new-team" novalidate>
     <form name="addTeamForm">
         <div class="form-group">
-            <input type="text" ng-model="newTeam.name" name="teamName" placeholder="Add new team" class="add form-control" required ng-pattern=/[a-zA-Z0-9]/ />
+            <input type="text" ng-model="newTeam.name" name="teamName" placeholder="Add new team"
+                   class="add form-control" required ng-pattern=/^[a-zA-Z0-9]*$/ />
             <button ng-click="addTeam(this, teamName)"  ng-disabled="addTeamForm.$invalid"
                     class="add btn btn-primary glyphicon glyphicon-plus">
             </button>
         </div>
         <div ng-show="addTeamForm.teamName.$dirty && addTeamForm.teamName.$invalid">
-            <span ng-show="addTeamForm.teamName.$error.pattern" class="validation-error-message">Team can contain only letters and digits.</span>
+            <span ng-show="addTeamForm.teamName.$error.pattern" class="validation-error-message">
+                Team can contain only letters and digits.
+            </span>
         </div>
 
     </form>

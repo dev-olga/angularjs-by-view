@@ -49,6 +49,18 @@
             $scope.refreshDisabled = members.length == 0;
         });
 
+        $scope.$watchCollection( function () { return teamsService.selectedTeam.members; }, function ( members ) {
+            for(var i=0; i<$scope.teamMembers.length; i++ ){
+                var item = $scope.teamMembers[i];
+                var index = arrayHelper.indexOf(members, function(val){
+                    return val.id == item.id;
+                });
+                if(index < 0){
+                    item.isRemoved = true;
+                }
+            }
+        });
+
         $scope.selectMember = function(item, model, label){
             var existedItem = arrayHelper.first($scope.teamMembers, function(val){
                 return !val.isRemoved && val.id ==  item.id;
