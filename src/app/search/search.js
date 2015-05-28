@@ -4,16 +4,16 @@
         .config(config);
 
     function config($stateProvider) {
-//        $stateProvider
-//            .state("app.search", {
-//                parent: "app",
-//                views:{
-//                    "container@layout":{
-//                        controller:"SearchCtrl",
-//                        templateUrl: "app/search/search.tpl.html"
-//                    }
-//                },
-//                url: "/app"
-//            });
+        $stateProvider
+            .state("app.search", {
+                parent: "app",
+                views:{
+                    "container@layout":{
+                        controller:"SearchCtrl",
+                        templateUrl: "app/search/search.tpl.html"
+                    }
+                },
+                url: "/app"
+            });
     }
 }(window.angular));

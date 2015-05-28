@@ -4,41 +4,27 @@
         .controller("SearchCtrl", ["$scope", "$filter", "teamsService", "searchService", SearchCtrl]);
 
     function SearchCtrl($scope, $filter, teamsService, searchService) {
-        var teamMembersListener = null;
-
-        $scope.teamMembers = [];
-        $scope.team = teamsService.selectedTeam;
+        var membersListener = undefined;
         $scope.refreshDisabled = true;
-
-        if ($scope.team){
-            $scope.teamMembers = angular.copy(teamsService.selectedTeam.members, $scope.teamMembers);//$scope.team.members;
-        }
+        $scope.teamMembers = [];
+        $scope.team = undefined;
 
         $scope.$watch( function () { return teamsService.selectedTeam; }, function ( team ) {
-            if ($scope.team == team){
-                return;
-            }
-            $scope.team = team;
-            $scope.teamMembers = [];
-            if (teamsService.selectedTeam){
-                angular.copy(teamsService.selectedTeam.members, $scope.teamMembers);
+            bindTeam(team);
 
-                if(teamMembersListener){
-                    teamMembersListener();
-                }
-
-                teamMembersListener = $scope.$watchCollection(
-                    function () { return teamsService.selectedTeam.members; }, function ( members ) {
-                        for (var i=0; i< $scope.teamMembers.length; i++){
-                            if ($scope.teamMembers[i].isNew){
+            if(!membersListener && teamsService.selectedTeam != null) {
+                membersListener = $scope.$watchCollection(function () { return teamsService.selectedTeam.members; },
+                    function (members) {
+                        for (var i = 0; i < $scope.teamMembers.length; i++) {
+                            var item = $scope.teamMembers[i];
+                            if (item.isNew) {
                                 continue;
                             }
-                            var index = arrayHelper.indexOf(members, function(val){
-                                return val.id == $scope.teamMembers[i].id;
+                            var index = arrayHelper.indexOf(members, function (val) {
+                                return val.id == item.id;
                             });
-                            if (index < 0){
-                                $scope.teamMembers.splice(i, 1);
-                                i--;
+                            if (index < 0) {
+                                item.isRemoved = true;
                             }
                         }
                     });
@@ -47,18 +33,6 @@
 
         $scope.$watchCollection( function () { return $scope.teamMembers; }, function ( members ) {
             $scope.refreshDisabled = members.length == 0;
-        });
-
-        $scope.$watchCollection( function () { return teamsService.selectedTeam.members; }, function ( members ) {
-            for(var i=0; i<$scope.teamMembers.length; i++ ){
-                var item = $scope.teamMembers[i];
-                var index = arrayHelper.indexOf(members, function(val){
-                    return val.id == item.id;
-                });
-                if(index < 0){
-                    item.isRemoved = true;
-                }
-            }
         });
 
         $scope.selectMember = function(item, model, label){
@@ -97,6 +71,19 @@
         $scope.refresh = function(){
             teamsService.refreshMembers($scope.teamMembers);
             $scope.teamMembers =  angular.copy(teamsService.selectedTeam.members, $scope.teamMembers);
+        }
+
+        var bindTeam = function(team){
+            if($scope.team == team){
+                return;
+            }
+            $scope.team = team;
+            if ($scope.team){
+                $scope.teamMembers = angular.copy(team.members, $scope.teamMembers);
+            }
+            else{
+                $scope.teamMembers = [];
+            }
         }
 
     }

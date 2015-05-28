@@ -9,7 +9,6 @@
             'angular-js-course-app.info'
         ])
         .config(config)
-     //   .run(run)
 
     function config($urlRouterProvider, $locationProvider, $stateProvider){
         $locationProvider.html5Mode(false);
@@ -35,33 +34,7 @@
                         controller:"TeamsCtrl"
                     }
                 }
-            })
-            .state("app.search", {
-                parent: "app",
-                views:{
-                    "container@layout":{
-                        controller:"SearchCtrl",
-                        templateUrl: "app/search/search.tpl.html"
-                    }
-                },
-                url: "/app"
-            })
-            .state("app.info", {
-                parent: "app",
-                views:{
-                    "container@layout":{
-                        controller:"InfoCtrl",
-                        templateUrl: "app/info/info.tpl.html"
-                    }
-                },
-                url: "/app/info"
             });
-
     };
-
-//    function run($rootScope, $state, $stateParams) {
-//            $rootScope.$state = $state;
-//            $rootScope.$stateParams = $stateParams;
-//        };
 }(window.angular));
 
