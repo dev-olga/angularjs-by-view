@@ -1,9 +1,9 @@
 (function (angular) {
 
     angular.module('angular-js-course-app.info')
-        .controller("InfoCtrl", ["$scope", "$sce", "teamsService", "searchService", InfoCtrl]);
+        .controller("InfoCtrl", ["$scope", "$sce", "teamsService", "dataService", InfoCtrl]);
 
-    function InfoCtrl($scope, $sce, teamsService, searchService, $timeout) {
+    function InfoCtrl($scope, $sce, teamsService, dataService) {
         $scope.members = [];
         $scope.membersLoading = true;
         $scope.itemsPerPage = 20;
@@ -20,7 +20,7 @@
             else {
                 member.expanded = true;
                 member.commentsLoading = true;
-                searchService.getComments().then(function (data) {
+                dataService.getComments().then(function (data) {
                     member.commentsLoading = false;
                     member.comments = $sce.trustAsHtml(data);
                 }, function(data){
@@ -38,7 +38,7 @@
         }
 
         $scope.loadMembers = function(){
-            searchService.search().then(function (data) {
+            dataService.getMembers().then(function (data) {
                     var members = [];
                     angular.forEach(data, function (member) {
                         members.push(new MemberItem(member));

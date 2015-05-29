@@ -1,11 +1,11 @@
 (function (angular) {
     angular
         .module("angular-js-course-app.common.services")
-        .service("searchService", ["$http", "$q", SearchService]);
+        .service("dataService", ["$http", "$q", DataService]);
 
-    function SearchService($http, $q){
+    function DataService($http, $q){
 
-        this.search = function() {
+        this.getMembers = function() {
             var deferred = $q.defer();
 
             $http({
@@ -48,9 +48,6 @@
             this.age = 0;
             this.grade = "";
             this.job = "";
-
-            this.isRemoved = false;
-            this.isNew = true;
         };
     }
 

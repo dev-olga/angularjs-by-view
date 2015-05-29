@@ -7,7 +7,7 @@
            typeahead-template-url="memberTemplate.html"
            ng-disabled="!team"
     />
-    <input type="button" value="Refresh" ng-disabled="refreshDisabled" class="refresh form-control" ng-click="refresh()">
+    <input type="button" value="Refresh" ng-disabled="!(team && team.members.length > 0)" class="refresh form-control" ng-click="refresh()">
 
     <script type="text/ng-template" id="memberTemplate.html">
         <a>
@@ -16,7 +16,10 @@
         </a>
     </script>
 
-    <div ng-repeat="member in teamMembers | filter:{isRemoved:false}" class="tags">
+    <div ng-repeat="member in team.members | filter:{status:MEMBER_STATUS.unchanged}" class="tags">
+        <tag item="member" on-remove="removeMember(member)"></tag>
+    </div>
+    <div ng-repeat="member in team.members | filter:{status:MEMBER_STATUS.added}" class="tags">
         <tag item="member" on-remove="removeMember(member)"></tag>
     </div>
 

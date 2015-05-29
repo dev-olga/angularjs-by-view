@@ -8,25 +8,21 @@
 
         this.selectedTeam = undefined;
 
-        this.selectTeam = function(team_id){
-            if (team_id && team_id in teams){
-                this.selectedTeam = teams[team_id];
-            }
-        }
+//        this.selectTeam = function(team){
+//            var index = arrayHelper.indexOf(teams, function(item){
+//                return item.id == team.id;
+//            });
+//            if (index > -1){
+//                this.selectedTeam = team;
+//            }
+//        }
 
-        this.refreshMembers = function(array){
-            for(var i=0; i<array.length; i++ ){
-                var item = array[i];
-                var index = arrayHelper.indexOf(this.selectedTeam.members, function(val){
-                    return val.id == item.id;
-                });
-                if(index < 0 && item.isNew){
-                    item.isNew = false;
-                    this.selectedTeam.members.push(item);
-                }
-                if (index > -1 && item.isRemoved){
-                    this.selectedTeam.members.splice(index, 1);
-                }
+        this.removeMember = function(member) {
+            var index = arrayHelper.indexOf(this.selectedTeam.members, function(val){
+                return val.id == member.id;
+            });
+            if (index > -1){
+                this.selectedTeam.members.splice(index, 1);
             }
         }
 
@@ -38,8 +34,6 @@
                return val.id == member.id;
             });
             if(!item){
-                member.isNew = false;
-                member.isRemoved = false;
                 this.selectedTeam.members.push(member);
             }
         }
