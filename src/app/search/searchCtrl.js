@@ -17,8 +17,8 @@
                 return;
             }
             bindTeam(team);
-            if(!membersListener && teamsService.selectedTeam != null) {
-                membersListener = $scope.$watchCollection(function () { return teamsService.selectedTeam.members; },
+            if(!membersListener &&team != null) {
+                membersListener = $scope.$watchCollection(function () { return team.members; },
                     function (members) {
                         angular.forEach($scope.team.members, function(item){
                             var index = arrayHelper.indexOf(members, function (val) {
