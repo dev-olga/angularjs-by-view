@@ -10,7 +10,7 @@
         $scope.currentPage = 1;
 
         $scope.select = function(member){
-            teamsService.addMember(member);
+            teamsService.selectedTeam.addMember(member);
         }
 
         $scope.expand = function(member){

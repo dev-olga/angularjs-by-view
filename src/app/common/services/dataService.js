@@ -1,9 +1,9 @@
 (function (angular) {
     angular
         .module("angular-js-course-app.common.services")
-        .service("dataService", ["$http", "$q", DataService]);
+        .service("dataService", ["$http", "$q", "MemberModel", DataService]);
 
-    function DataService($http, $q){
+    function DataService($http, $q, MemberModel){
 
         this.getMembers = function() {
             var deferred = $q.defer();
@@ -15,7 +15,7 @@
             }).then(function (response) {
                 var members = [];
                 angular.forEach(response.data, function (value, index) {
-                    var member = new Member();
+                    var member = new MemberModel();
                     angular.extend(member, value);
                     members.push(member);
                 });
@@ -41,14 +41,6 @@
 
             return deferred.promise;
         }
-
-        function Member(){
-            this.id = 0;
-            this.name = "";
-            this.age = 0;
-            this.grade = "";
-            this.job = "";
-        };
     }
 
 }(window.angular));

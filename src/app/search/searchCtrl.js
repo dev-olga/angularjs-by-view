@@ -33,11 +33,11 @@
         });
 
         $scope.selectMember = function(item, model, label){
-            var existedItem = arrayHelper.first($scope.team.members, function(val){
-                return val.status !=  $scope.MEMBER_STATUS.removed && val.id ==  item.id;
+            var item = arrayHelper.first($scope.team.members, function(val){
+                return val.status !=  $scope.MEMBER_STATUS.added && val.id ==  item.id;
             });
-            if(existedItem) {
-                model.status = $scope.MEMBER_STATUS.unchanged;
+            if(item) {
+                item.status = $scope.MEMBER_STATUS.unchanged;
             }
             else{
                 model.status =$scope.MEMBER_STATUS.added;
@@ -73,11 +73,11 @@
                 switch (status) {
                     case $scope.MEMBER_STATUS.added:
                     {
-                        teamsService.addMember(item);
+                        teamsService.selectedTeam.addMember(item);
                         break;
                     }
                     case  $scope.MEMBER_STATUS.removed:{
-                        teamsService.removeMember(item);
+                        teamsService.selectedTeam.removeMember(item);
                         break;
                     }
                 }
