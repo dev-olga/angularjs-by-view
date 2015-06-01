@@ -9,7 +9,7 @@
             var deferred = $q.defer();
 
             $http({
-                url: "../src/common/data.json",
+                url: "../src/assets/data.json",
                 dataType: "json",
                 method: "GET"
             }).then(function (response) {
