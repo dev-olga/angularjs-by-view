@@ -16,32 +16,21 @@
             if(!team){
                 return;
             }
-            bindTeam(team);
-            if(!membersListener &&team != null) {
-                membersListener = $scope.$watchCollection(function () { return team.members; },
-                    function (members) {
-                        angular.forEach($scope.team.members, function(item){
-                            var index = arrayHelper.indexOf(members, function (val) {
-                                return val.id == item.id;
-                            });
-                            if (index < 0) {
-                                item.status = $scope.MEMBER_STATUS.removed;
-                            }
-                        });
-                    });
-            }
+            $scope.team = new TeamItem(team);
+            bindMembersWatcher();
         });
 
         $scope.selectMember = function(item, model, label){
-            var item = arrayHelper.first($scope.team.members, function(val){
-                return val.status !=  $scope.MEMBER_STATUS.added && val.id ==  item.id;
+            var existedItem = arrayHelper.first($scope.team.members, function(val){
+                return val.status !=  $scope.MEMBER_STATUS.added && val.member.id == model.id;
             });
-            if(item) {
-                item.status = $scope.MEMBER_STATUS.unchanged;
+            if(existedItem) {
+                existedItem.status = $scope.MEMBER_STATUS.unchanged;
             }
             else{
-                model.status =$scope.MEMBER_STATUS.added;
-                $scope.team.members.push(model);
+                var newItem = new MemberItem(model);
+                newItem.status =$scope.MEMBER_STATUS.added;
+                $scope.team.members.push(newItem);
             }
             $scope.selectedMember = undefined;
         }
@@ -67,33 +56,51 @@
         }
 
         $scope.refresh = function(){
+            membersListener();
             angular.forEach($scope.team.members, function(item){
-                var status = item.status;
-                delete item.status;
-                switch (status) {
+                switch (item.status) {
                     case $scope.MEMBER_STATUS.added:
                     {
-                        teamsService.selectedTeam.addMember(item);
+                        teamsService.selectedTeam.addMember(item.member);
                         break;
                     }
                     case  $scope.MEMBER_STATUS.removed:{
-                        teamsService.selectedTeam.removeMember(item);
+                        teamsService.selectedTeam.removeMember(item.member);
                         break;
                     }
                 }
+                item.status = $scope.MEMBER_STATUS.unchanged;
             });
-
-            bindTeam(teamsService.selectedTeam);
+            bindMembersWatcher();
         }
 
-        var bindTeam = function(team){
-            if(!team){
-                return;
+        var bindMembersWatcher = function(){
+            if(membersListener){
+                membersListener();
             }
-            $scope.team = angular.copy(team);
-            angular.forEach($scope.team.members, function(item){
-                angular.extend(item, {status: $scope.MEMBER_STATUS.unchanged});
-            });
+            membersListener = $scope.$watchCollection(function () { return teamsService.selectedTeam.members; },
+                function (watchedMembers) {
+                    angular.forEach($scope.team.members, function(item){
+                        var index = watchedMembers.indexOf(item.member);
+                        if(index < 0){
+                            $scope.team.members.splice($scope.team.members.indexOf(item), 1);
+                        }
+                    });
+                });
+        }
+
+        var MemberItem = function(member){
+            this.member = member;
+            this.status =  $scope.MEMBER_STATUS.unchanged;
+        }
+
+        var TeamItem = function(team){
+            this.is = team.id;
+            this.name = team.name;
+            this.members = [];
+            for(var i=0; i<team.members.length; i++){
+                this.members.push(new MemberItem(team.members[i]));
+            }
         }
 
     }

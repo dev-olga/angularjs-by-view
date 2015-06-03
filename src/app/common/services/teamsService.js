@@ -13,6 +13,7 @@
             team.id = teams.length + 1;
             team.name = name;
             teams.push(team);
+            return team;
         }
 
         this.getTeams = function(){

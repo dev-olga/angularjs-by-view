@@ -9,7 +9,8 @@
         $scope.currentTeam = teamsService.selectedTeam;
 
         $scope.addTeam = function() {
-            teamsService.addTeam($scope.newTeam.name);
+            var team = teamsService.addTeam($scope.newTeam.name);
+            $scope.selectTeam(team);
             $scope.teams = teamsService.getTeams();
             $scope.newTeam = teamsService.createTeam();
         }
