@@ -57,20 +57,20 @@
 
         $scope.refresh = function(){
             membersListener();
-            angular.forEach($scope.team.members, function(item){
+            for(var i=0; i<$scope.team.members.length; i++ ){
+                var item = $scope.team.members[i];
                 switch (item.status) {
                     case $scope.MEMBER_STATUS.added:
                     {
                         teamsService.selectedTeam.addMember(item.member);
                         break;
                     }
-                    case  $scope.MEMBER_STATUS.removed:{
+                    case $scope.MEMBER_STATUS.removed:{
                         teamsService.selectedTeam.removeMember(item.member);
                         break;
                     }
                 }
-                item.status = $scope.MEMBER_STATUS.unchanged;
-            });
+            }
             bindMembersWatcher();
         }
 
@@ -80,12 +80,13 @@
             }
             membersListener = $scope.$watchCollection(function () { return teamsService.selectedTeam.members; },
                 function (watchedMembers) {
-                    angular.forEach($scope.team.members, function(item){
-                        var index = watchedMembers.indexOf(item.member);
-                        if(index < 0){
-                            $scope.team.members.splice($scope.team.members.indexOf(item), 1);
+                    for(var i=0; i<$scope.team.members.length; i++ ) {
+                        var item = $scope.team.members[i];
+                        if(watchedMembers.indexOf(item.member) < 0){
+                            $scope.team.members.splice(i, 1);
+                            i--;
                         }
-                    });
+                    }
                 });
         }
 
