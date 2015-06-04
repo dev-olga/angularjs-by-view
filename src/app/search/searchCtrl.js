@@ -96,7 +96,6 @@
         }
 
         var TeamItem = function(team){
-            this.is = team.id;
             this.name = team.name;
             this.members = [];
             for(var i=0; i<team.members.length; i++){

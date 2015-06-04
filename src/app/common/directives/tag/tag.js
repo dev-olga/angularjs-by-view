@@ -8,7 +8,7 @@
                 templateUrl: 'app/common/directives/tag/tag.tpl.html',
                 replace: true,
                 scope: {
-                    item: '=item',
+                    model: '=model',
                     remove: '&onRemove'
                 }
             }

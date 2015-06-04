@@ -1,13 +1,13 @@
 (function (angular) {
 
     angular
-        .module('angular-js-course-app.info.directives')
+        .module('angular-js-course-app.common.directives')
         .directive('memberTitle', function(){
             return{
                 restrict: 'E',
-                templateUrl: 'app/info/directives/memberTitle/member-title.tpl.html',
+                templateUrl: 'app/common/directives/memberTitle/member-title.tpl.html',
                 scope: {
-                    item: '=item'
+                    model: '=model'
                 }
             }
         });

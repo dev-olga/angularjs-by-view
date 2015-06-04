@@ -3,7 +3,6 @@
         .module('angular-js-course-app.common.factories')
         .factory("TeamModel", ["MemberModel",function(MemberModel){
             var Team = function (){
-                this.id = 0;
                 this.name = "";
                 this.members = [];
 

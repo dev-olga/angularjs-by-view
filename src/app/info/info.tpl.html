@@ -34,7 +34,7 @@
                 ng-class-even="'even'"
                 class="expandable">
                 <td>
-                    <span class="link" ng-click="select(item.member); $event.stopPropagation()"><member-title item="item.member"></member-title></span>
+                    <span class="link" ng-click="select(item.member); $event.stopPropagation()"><member-title model="item.member"></member-title></span>
                 </td>
                 <td>{{item.member.job}}</td>
                 <td>{{item.member.age}}</td>

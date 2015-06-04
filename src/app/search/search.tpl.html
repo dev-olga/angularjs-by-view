@@ -18,10 +18,10 @@
     </script>
 
     <div ng-repeat="member in filtered = (team.members | filter:{status:MEMBER_STATUS.unchanged})" class="tags">
-        <tag item="member.member" on-remove="removeMember(member)"></tag>
+        <tag model="member.member" on-remove="removeMember(member)"></tag>
     </div>
     <div ng-repeat="member in filtered = (team.members | filter:{status:MEMBER_STATUS.added})" class="tags">
-        <tag item="member.member" on-remove="removeMember(member)"></tag>
+        <tag model="member.member" on-remove="removeMember(member)"></tag>
     </div>
 
 </div>

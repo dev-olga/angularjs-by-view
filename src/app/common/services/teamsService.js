@@ -10,7 +10,6 @@
 
         this.addTeam = function(name){
             var team = new TeamModel();
-            team.id = teams.length + 1;
             team.name = name;
             teams.push(team);
             return team;
