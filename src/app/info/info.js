@@ -8,7 +8,7 @@
         'angular-js-course-app.info.directives',
         'angular-js-course-app.info.filters'
     ])
-        .config(config);
+    .config(config);
 
     function config($stateProvider) {
         $stateProvider

@@ -1,3 +1,4 @@
+'use strict';
 (function (angular) {
 
     angular
@@ -10,7 +11,5 @@
             }
             return newArr;
         };})
-
-
 
 }(window.angular));
