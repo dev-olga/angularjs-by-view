@@ -1,7 +1,7 @@
 'use strict';
 (function (angular) {
 
-    angular.module('angular-js-course-app.common.components.tabs')
+    angular.module('angular-js-course-app.tabs')
         .controller("TabsCtrl", ["$scope", "$state", TabsCtrl]);
 
     function TabsCtrl($scope, $state) {

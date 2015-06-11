@@ -1,7 +1,7 @@
 'use strict';
 (function (angular) {
     angular
-        .module('angular-js-course-app.common.factories')
+        .module('angular-js-course-app.common.features.members')
         .factory("MemberModel", function(){
             var Member = function (){
                 this.id = 0;

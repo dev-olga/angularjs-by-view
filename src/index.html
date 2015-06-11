@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <title>Teams manager</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="common/common.css">
     <link rel="stylesheet" href="app/app.css">
-
+    <!--<% styles.forEach( function ( file ) { %>-->
+    <!--<link rel="stylesheet" type="text/css" href="<%= file %>"/><% }); %>-->
 </head>
 <body ng-cloak>
 
@@ -15,44 +16,38 @@
     <div ui-view></div>
 
 </div>
+<!--<% scripts.forEach( function ( file ) { %>-->
+<!--<script type="text/javascript" src="<%= file %>"></script><% }); %>-->
 
-<!-- JavaScript vendor files -->
-<script src="../vendor/angular/angular.js"></script>
-<script src="../vendor/angular-ui-router/angular-ui-router.js"></script>
-<script src="../vendor/angular-ui-bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
-<!-- Common/Helpers -->
-<script src="scripts/array-helper.js"></script>
-<!-- JavaScript application files -->
-<script src="app/app.js"></script>
-<!--Search page-->
-<script src="app/search/search.js"></script>
-<script src="app/search/searchCtrl.js"></script>
-<!--Info page-->
-<script src="app/info/info.js"></script>
-<script src="app/info/infoCtrl.js"></script>
-<script src="app/info/directives/postRender/post-render.js"></script>
-<script src="app/info/directives/columnSort/column-sort.js"></script>
-<script src="app/info/filters/interval.js"></script>
-<!-- Common -->
-<script src="app/common/common.js"></script>
-<!-- Common/Factories -->
-<script src="app/common/factories/factories.js"></script>
-<script src="app/common/factories/memberModel.js"></script>
-<script src="app/common/factories/teamModel.js"></script>
-<!-- Common/Services -->
-<script src="app/common/services/services.js"></script>
-<script src="app/common/services/teamsService.js"></script>
-<script src="app/common/services/dataService.js"></script>
-<!-- Common/Components -->
-<script src="app/common/components/components.js"></script>
-<script src="app/common/components/tabs/tabs.js"></script>
-<script src="app/common/components/tabs/tabsCtrl.js"></script>
-<script src="app/common/components/teams/teams.js"></script>
-<script src="app/common/components/teams/teamsCtrl.js"></script>
-<!--Common/Directives -->
-<script src="app/common/directives/directives.js"></script>
-<script src="app/common/directives/tag/tag.js"></script>
-<script src="app/common/directives/memberTitle/member-title.js"></script>
-<script src="app/common/directives/unique.js"></script>
+<script type="text/javascript" src="../vendor/angular/angular.js"></script>
+<script type="text/javascript" src="../vendor/angular-ui-router/angular-ui-router.js"></script>
+<script type="text/javascript" src="../vendor/angular-ui-bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
+<script type="text/javascript" src="app/app.js"></script>
+<script type="text/javascript" src="app/info/directives/directives.js"></script>
+<script type="text/javascript" src="app/info/directives/columnSort/column-sort.js"></script>
+<script type="text/javascript" src="app/info/directives/postRender/post-render.js"></script>
+<script type="text/javascript" src="app/info/filters/filters.js"></script>
+<script type="text/javascript" src="app/info/filters/interval.js"></script>
+<script type="text/javascript" src="app/info/info.js"></script>
+<script type="text/javascript" src="app/info/infoCtrl.js"></script>
+<script type="text/javascript" src="app/search/search.js"></script>
+<script type="text/javascript" src="app/search/searchCtrl.js"></script>
+<script type="text/javascript" src="app/tabs/tabs.js"></script>
+<script type="text/javascript" src="app/tabs/tabsCtrl.js"></script>
+<script type="text/javascript" src="app/teams/teams.js"></script>
+<script type="text/javascript" src="app/teams/teamsCtrl.js"></script>
+<script type="text/javascript" src="common/array-helper.js"></script>
+<script type="text/javascript" src="common/common.js"></script>
+<script type="text/javascript" src="common/components/components.js"></script>
+<script type="text/javascript" src="common/components/memberTitle/member-title.js"></script>
+<script type="text/javascript" src="common/components/tag/tag.js"></script>
+<script type="text/javascript" src="common/components/unique-validator/unique.js"></script>
+<script type="text/javascript" src="common/features/features.js"></script>
+<script type="text/javascript" src="common/features/members/members.js"></script>
+<script type="text/javascript" src="common/features/members/dataService.js"></script>
+<script type="text/javascript" src="common/features/members/memberModel.js"></script>
+<script type="text/javascript" src="common/features/teams/teams.js"></script>
+<script type="text/javascript" src="common/features/teams/teamModel.js"></script>
+<script type="text/javascript" src="common/features/teams/teamsService.js"></script>
 </body>
 </html>

@@ -2,11 +2,11 @@
 (function (angular) {
 
     angular
-        .module('angular-js-course-app.common.directives')
+        .module('angular-js-course-app.common.components')
         .directive('memberTitle', function(){
             return{
                 restrict: 'E',
-                templateUrl: 'app/common/directives/memberTitle/member-title.tpl.html',
+                templateUrl: 'common/components/memberTitle/member-title.tpl.html',
                 scope: {
                     model: '=model'
                 }

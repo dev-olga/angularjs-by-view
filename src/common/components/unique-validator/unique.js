@@ -1,7 +1,7 @@
 'use strict';
 (function (angular) {
     angular
-        .module('angular-js-course-app.common.directives')
+        .module('angular-js-course-app.common.components')
         .directive('unique', function(){
             var isValid = function(value) {
                 return !value

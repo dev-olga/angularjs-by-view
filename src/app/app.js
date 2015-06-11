@@ -5,6 +5,8 @@
             'ui.router',
             'ui.bootstrap',
             'angular-js-course-app.common',
+            'angular-js-course-app.teams',
+            'angular-js-course-app.tabs',
             'angular-js-course-app.search',
             'angular-js-course-app.info'
         ])
@@ -26,11 +28,11 @@
                 url: "",
                 views:{
                     "top-navigation": {
-                        templateUrl: 'app/common/components/tabs/tabs.tpl.html',
+                        templateUrl: 'app/tabs/tabs.tpl.html',
                         controller:"TabsCtrl"
                     },
                     "teams-list": {
-                        templateUrl: 'app/common/components/teams/teams.tpl.html',
+                        templateUrl: 'app/teams/teams.tpl.html',
                         controller:"TeamsCtrl"
                     }
                 }
