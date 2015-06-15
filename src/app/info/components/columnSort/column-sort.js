@@ -2,7 +2,7 @@
 (function (angular) {
 
     angular
-        .module('angular-js-course-app.info.components')
+        .module('angular-js-course-app.info.components.column-sort', [])
         .directive('columnSort', function(){
             return{
                 restrict: 'A',

@@ -2,7 +2,7 @@
 (function (angular) {
 
     angular
-        .module('angular-js-course-app.info.components')
+        .module('angular-js-course-app.info.components.post-render', [])
         .directive('postRender', ['$timeout', function($timeout) {
             return{
                 restrict: 'E',

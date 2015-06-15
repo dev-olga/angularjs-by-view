@@ -14,7 +14,7 @@
                 views:{
                     "container@layout":{
                         controller:"InfoCtrl",
-                        templateUrl: "app/info/info.tpl.html"
+                        templateUrl: "info/info.tpl.html"
                     }
                 },
                 url: "/app/info"

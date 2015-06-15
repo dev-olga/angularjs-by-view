@@ -74,7 +74,7 @@
 }
 .loading{
     padding: 12px;
-    background: url("../assets/images/ajax_loader.gif") no-repeat center bottom;
+    background: url("../../assets/images/ajax_loader.gif") no-repeat center bottom;
     text-align: center;
 }
 .even{

@@ -6,7 +6,7 @@
         .directive('tag', function(){
             return{
                 restrict: 'E',
-                templateUrl: 'common/components/tag/tag.tpl.html',
+                templateUrl: '../common/components/tag/tag.tpl.html',
                 replace: true,
                 scope: {
                     model: '=model',

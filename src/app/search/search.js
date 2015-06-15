@@ -10,7 +10,7 @@
                 views:{
                     "container@layout":{
                         controller:"SearchCtrl",
-                        templateUrl: "app/search/search.tpl.html"
+                        templateUrl: "search/search.tpl.html"
                     }
                 },
                 url: "/app"

@@ -6,7 +6,7 @@
         .directive('memberTitle', function(){
             return{
                 restrict: 'E',
-                templateUrl: 'common/components/memberTitle/member-title.tpl.html',
+                templateUrl: '../common/components/memberTitle/member-title.tpl.html',
                 scope: {
                     model: '=model'
                 }

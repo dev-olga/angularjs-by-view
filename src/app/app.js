@@ -4,6 +4,7 @@
         .module("angular-js-course-app", [
             'ui.router',
             'ui.bootstrap',
+            'templates-app',
             'angular-js-course-app.common',
             'angular-js-course-app.teams',
             'angular-js-course-app.tabs',
@@ -20,7 +21,7 @@
             .state("layout", {
                 abstract: true,
                 url:"",
-                templateUrl: 'app/app.tpl.html'
+                templateUrl: 'app.tpl.html'
             })
             .state("app", {
                 abstract: true,
@@ -28,11 +29,11 @@
                 url: "",
                 views:{
                     "top-navigation": {
-                        templateUrl: 'app/layout/tabs/tabs.tpl.html',
+                        templateUrl: 'layout/tabs/tabs.tpl.html',
                         controller:"TabsCtrl"
                     },
                     "teams-list": {
-                        templateUrl: 'app/layout/teams/teams.tpl.html',
+                        templateUrl: 'layout/teams/teams.tpl.html',
                         controller:"TeamsCtrl"
                     }
                 }
