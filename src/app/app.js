@@ -28,11 +28,11 @@
                 url: "",
                 views:{
                     "top-navigation": {
-                        templateUrl: 'app/tabs/tabs.tpl.html',
+                        templateUrl: 'app/layout/tabs/tabs.tpl.html',
                         controller:"TabsCtrl"
                     },
                     "teams-list": {
-                        templateUrl: 'app/teams/teams.tpl.html',
+                        templateUrl: 'app/layout/teams/teams.tpl.html',
                         controller:"TeamsCtrl"
                     }
                 }

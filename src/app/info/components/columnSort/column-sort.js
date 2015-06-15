@@ -2,11 +2,11 @@
 (function (angular) {
 
     angular
-        .module('angular-js-course-app.info.directives')
+        .module('angular-js-course-app.info.components')
         .directive('columnSort', function(){
             return{
                 restrict: 'A',
-                templateUrl: 'app/info/directives/columnSort/column-sort.tpl.html',
+                templateUrl: 'app/info/components/columnSort/column-sort.tpl.html',
                 transclude: true,
                 scope: {
                     order: '=',

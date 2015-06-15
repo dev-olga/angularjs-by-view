@@ -1,7 +1,7 @@
 'use strict';
 (function (angular) {
     angular
-        .module('angular-js-course-app.common.features.teams')
+        .module('angular-js-course-app.common.features.team')
         .service("teamsService",["TeamModel", TeamsService] );
 
     function TeamsService(TeamModel){

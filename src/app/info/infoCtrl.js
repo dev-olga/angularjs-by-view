@@ -2,7 +2,7 @@
 (function (angular) {
 
     angular.module('angular-js-course-app.info')
-        .controller("InfoCtrl", ["$scope", "$sce", "teamsService", "dataService", InfoCtrl]);
+        .controller("InfoCtrl", ["$scope", "$sce", "teamsService", "membersService", InfoCtrl]);
 
     function InfoCtrl($scope, $sce, teamsService, dataService) {
         $scope.members = [];

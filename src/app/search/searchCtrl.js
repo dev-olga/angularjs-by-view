@@ -2,7 +2,7 @@
 (function (angular) {
 
     angular.module('angular-js-course-app.search')
-        .controller("SearchCtrl", ["$scope", "$filter", "teamsService", "dataService", SearchCtrl]);
+        .controller("SearchCtrl", ["$scope", "$filter", "teamsService", "membersService", SearchCtrl]);
 
     function SearchCtrl($scope, $filter, teamsService, dataService) {
         var membersListener = undefined;

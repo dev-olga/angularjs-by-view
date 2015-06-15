@@ -1,12 +1,9 @@
 'use strict';
 (function (angular) {
-//    angular.module('angular-js-course-app.info.directives', []);
-//    angular.module('angular-js-course-app.info.filters', []);
 
     angular.module('angular-js-course-app.info', [
         'ui.router',
-        'angular-js-course-app.info.directives',
-        'angular-js-course-app.info.filters'
+        'angular-js-course-app.info.components'
     ])
     .config(config);
 

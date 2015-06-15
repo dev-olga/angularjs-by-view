@@ -2,7 +2,7 @@
 (function (angular) {
 
     angular
-        .module('angular-js-course-app.info.filters')
+        .module('angular-js-course-app.info.components')
         .filter("interval",  function() { return function(items, start, limitTo) {
             var newArr = [];
             start = +start;

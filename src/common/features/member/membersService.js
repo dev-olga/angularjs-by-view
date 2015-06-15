@@ -1,10 +1,10 @@
 'use strict';
 (function (angular) {
     angular
-        .module("angular-js-course-app.common.features.members")
-        .service("dataService", ["$http", "$q", "MemberModel", DataService]);
+        .module("angular-js-course-app.common.features.member")
+        .service("membersService", ["$http", "$q", "MemberModel", MembersService]);
 
-    function DataService($http, $q, MemberModel){
+    function MembersService($http, $q, MemberModel){
 
         this.getMembers = function() {
             var deferred = $q.defer();

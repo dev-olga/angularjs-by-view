@@ -1,7 +1,7 @@
 'use strict';
 (function (angular) {
     angular
-        .module('angular-js-course-app.common.features.teams')
+        .module('angular-js-course-app.common.features.team')
         .factory("TeamModel", ["MemberModel",function(MemberModel){
             var Team = function (){
                 this.name = "";
