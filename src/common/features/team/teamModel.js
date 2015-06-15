@@ -2,7 +2,7 @@
 (function (angular) {
     angular
         .module('angular-js-course-app.common.features.team')
-        .factory("TeamModel", ["MemberModel",function(MemberModel){
+        .factory("TeamModel", ["MemberModel", "arrayHelper", function(MemberModel, arrayHelper){
             var Team = function (){
                 this.name = "";
                 this.members = [];

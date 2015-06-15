@@ -2,15 +2,15 @@
 (function (angular) {
 
     angular.module('angular-js-course-app.search')
-        .controller("SearchCtrl", ["$scope", "$filter", "teamsService", "membersService", SearchCtrl]);
+        .controller("SearchCtrl", ["$scope", "$filter", "teamsService", "membersService", "arrayHelper", SearchCtrl]);
 
-    function SearchCtrl($scope, $filter, teamsService, dataService) {
-        var membersListener = undefined;
+    function SearchCtrl($scope, $filter, teamsService, dataService, arrayHelper) {
+        var membersListener;
         $scope.MEMBER_STATUS = {
             unchanged: 0,
             added: 1,
             removed: 2
-        }
+        };
         $scope.team = undefined;
 
         $scope.$watch( function () { return teamsService.selectedTeam; }, function ( team ) {
@@ -23,7 +23,7 @@
 
         $scope.selectMember = function(item, model, label){
             var existedItem = arrayHelper.first($scope.team.members, function(val){
-                return val.status !=  $scope.MEMBER_STATUS.added && val.member.id == model.id;
+                return val.status !==  $scope.MEMBER_STATUS.added && val.member.id === model.id;
             });
             if(existedItem) {
                 existedItem.status = $scope.MEMBER_STATUS.unchanged;
@@ -34,7 +34,7 @@
                 $scope.team.members.push(newItem);
             }
             $scope.selectedMember = undefined;
-        }
+        };
 
         $scope.searchMembers = function (val) {
             var searchParam = val.toString().toLowerCase();
@@ -42,10 +42,10 @@
                 var res = $filter('filter')(data, searchParam);
                 return $filter('orderBy')(res, 'name');
             });
-        }
+        };
 
         $scope.removeMember = function(member){
-            if (member.status == $scope.MEMBER_STATUS.added){
+            if (member.status === $scope.MEMBER_STATUS.added){
                 var index =  $scope.team.members.indexOf(member);
                 if (index > -1){
                     $scope.team.members.splice(index, 1);
@@ -54,7 +54,7 @@
             else {
                 member.status = $scope.MEMBER_STATUS.removed;
             }
-        }
+        };
 
         $scope.refresh = function(){
             membersListener();
@@ -73,7 +73,7 @@
                 }
             }
             bindMembersWatcher();
-        }
+        };
 
         var bindMembersWatcher = function(){
             if(membersListener){
@@ -89,12 +89,12 @@
                         }
                     }
                 });
-        }
+        };
 
         var MemberItem = function(member){
             this.member = member;
             this.status =  $scope.MEMBER_STATUS.unchanged;
-        }
+        };
 
         var TeamItem = function(team){
             this.name = team.name;
@@ -102,7 +102,6 @@
             for(var i=0; i<team.members.length; i++){
                 this.members.push(new MemberItem(team.members[i]));
             }
-        }
-
+        };
     }
 }(window.angular));

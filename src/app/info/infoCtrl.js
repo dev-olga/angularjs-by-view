@@ -14,7 +14,7 @@
             if(teamsService.selectedTeam) {
                 teamsService.selectedTeam.addMember(member);
             }
-        }
+        };
 
         $scope.expand = function(member){
             if (member.expanded){
@@ -31,26 +31,26 @@
                     member.expanded = false;
                 });
             }
-        }
+        };
 
         var MemberItem = function(member){
             this.member = member;
             this.comments = "";
             this.expanded = false;
             this.loading = false;
-        }
+        };
 
         $scope.loadMembers = function(){
             dataService.getMembers().then(function (data) {
                     var members = [];
                     angular.forEach(data, function (member) {
                         members.push(new MemberItem(member));
-                    })
+                    });
                     $scope.members = members;
                     $scope.membersLoading = false;
                 }
             );
-        }
+        };
     }
 
 }(window.angular));

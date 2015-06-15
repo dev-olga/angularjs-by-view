@@ -21,9 +21,9 @@
                             scope.by = scope.order ;
                             scope.reverse = false;
                         }
-                    }
+                    };
                 }
-            }
+            };
         });
 
 }(window.angular));

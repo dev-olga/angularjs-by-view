@@ -2,7 +2,7 @@
 (function (angular) {
     angular
         .module('angular-js-course-app.common.components')
-        .directive('unique', function(){
+        .directive('unique', ["arrayHelper", function(arrayHelper){
             var isValid = function(value) {
                 return !value
                     || !list
@@ -31,5 +31,5 @@
                     list: "=unique"
                 }
             }
-        });
+        }]);
 }(window.angular));

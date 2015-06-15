@@ -466,19 +466,11 @@ module.exports = function(grunt) {
 
 
     grunt.registerTask('build', [
-       /* 'jshint', */'clean:build', 'copy', /*'recess', */ 'html2js', 'pack:build'
-    ]);
-
-    grunt.registerTask('compile', [
-        'build', 'ngAnnotate', 'concat', 'uglify', 'cssmin', 'clean:compile', 'pack:compile'
+        'jshint', 'clean:build', 'copy', 'html2js', 'pack:build'
     ]);
 
     grunt.registerTask('up', [
         'build', 'http-server:dev', 'watch'
-    ]);
-
-    grunt.registerTask('up:compile', [
-        'compile', 'http-server:prod'
     ]);
 
 };

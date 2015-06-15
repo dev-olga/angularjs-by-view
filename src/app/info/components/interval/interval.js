@@ -10,6 +10,6 @@
                 newArr.push(items[i]);
             }
             return newArr;
-        };})
+        };});
 
 }(window.angular));

@@ -11,7 +11,7 @@
             'angular-js-course-app.search',
             'angular-js-course-app.info'
         ])
-        .config(config)
+        .config(config);
 
     function config($urlRouterProvider, $locationProvider, $stateProvider){
         $locationProvider.html5Mode(false);
@@ -38,6 +38,6 @@
                     }
                 }
             });
-    };
+    }
 }(window.angular));
 

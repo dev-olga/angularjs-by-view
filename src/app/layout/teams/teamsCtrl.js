@@ -14,22 +14,22 @@
             $scope.selectTeam(team);
             $scope.teams = teamsService.getTeams();
             $scope.newTeam = teamsService.createTeam();
-        }
+        };
 
         $scope.isSelected = function(team){
-            return $scope.currentTeam && $scope.currentTeam.id == team.id;
-        }
+            return $scope.currentTeam && $scope.currentTeam.id === team.id;
+        };
 
         $scope.selectTeam = function(team){
             teamsService.selectedTeam = team;
-        }
+        };
 
         $scope.removeMember = function(member){
             var index = $scope.currentTeam.members.indexOf(member);
             if (index> -1){
                 $scope.currentTeam.members.splice(index, 1);
             }
-        }
+        };
 
         $scope.$watch( function () { return teamsService.selectedTeam; }, function ( selectedTeam ) {
             $scope.currentTeam = selectedTeam;
