@@ -5,18 +5,16 @@
 
     function ArrayHelper(){
         this.first = function(array, func){
-            var i = 0;
-            for(; i< array.length; i++){
+            for(var i = 0; i< array.length; i++){
                 if(func(array[i])){
                     return array[i];
                 }
             }
-            return false;
+            return undefined;
         }
 
         this.indexOf = function(array, func){
-            var i = 0;
-            for(; i< array.length; i++){
+            for(var i = 0; i< array.length; i++){
                 if(func(array[i])){
                     return i;
                 }
